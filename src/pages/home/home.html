@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>QR Code app</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -15,4 +15,27 @@
   </p>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
+
+  <ion-item>
+    <ion-input type="text" placeholder="My QR Code data" [(ngModel)]="qrData"></ion-input>
+  </ion-item>
+  <button ion-button full icon-left (click)="createCode()">
+    <ion-icon name="barcode">Create QR Code</ion-icon>
+  </button>
+  <button ion-button full icon-left (click)="scanCode()">
+    <ion-icon name="qr-scanner">Scan QR Code</ion-icon>
+  </button>
+
+  <ion-card *ngIf="createdCode">
+    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+    <ion-card-content>
+      <p>Value: {{ createdCode }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content>
+      Result from scan: {{ scannedCode }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
