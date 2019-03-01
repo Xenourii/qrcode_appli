@@ -19,6 +19,8 @@ export class HomePage {
   constructor(private socialSharing: SocialSharing, private historyService: ProvidersHistoryProvider) {}
 
   async createCode() {
+    if (!this.qrData) return;
+
     this.createdCode = this.qrData;
     var history = <QrCodeHistory>{
       Text: this.qrData,

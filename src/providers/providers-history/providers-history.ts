@@ -10,6 +10,14 @@ export class ProvidersHistoryProvider {
 
   constructor(private storage: ProvidersStorageProvider) {}
 
+  async clear(){
+    try {
+      await this.storage.clear();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async saveToHistory(history: QrCodeHistory) {
     try {
       var histories = await this.getHistories();

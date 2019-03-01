@@ -15,12 +15,21 @@ export class ListPage {
   constructor(public navCtrl: NavController, private historyService: ProvidersHistoryProvider) { }
 
   async ionViewWillEnter(){
-    this.histories = await  this.historyService.getHistories();
+    await this.getHistories();
   }
 
   onHistoryClick(history: QrCodeHistory){
     console.log(history);
     this.createdCode = history.Text;
+  }
+
+  async cleanHistory(){
+    await this.historyService.clear();
+    await this.getHistories();
+  }
+
+  private async getHistories(){
+    this.histories = await  this.historyService.getHistories();
   }
 
 }
