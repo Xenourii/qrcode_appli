@@ -22,7 +22,7 @@ export class HomePage {
     if (!this.qrData) return;
 
     this.createdCode = this.qrData;
-    var history = <QrCodeHistory>{
+    var history = <QrCodeHistory> {
       Text: this.qrData,
       Date: new Date()
     };

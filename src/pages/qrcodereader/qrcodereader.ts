@@ -1,4 +1,4 @@
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'qrcodereader.html',
 })
 export class QrcodereaderPage {
-  
+
   scannedCode = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner) {
@@ -19,7 +19,12 @@ export class QrcodereaderPage {
   }
 
   scanCode() {
-    this.barcodeScanner.scan().then(barcodedData => {
+    var options = <BarcodeScannerOptions> {
+      showFlipCameraButton: true, // iOS and Android
+      showTorchButton: true, // iOS and Android
+      prompt : "Place a QR Code inside the scan area", // Android
+    }
+    this.barcodeScanner.scan(options).then(barcodedData => {
       this.scannedCode = barcodedData.text;
     });
   }
