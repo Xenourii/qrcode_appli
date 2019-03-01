@@ -1,8 +1,8 @@
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { NgxQRCodeComponent } from 'ngx-qrcode2';
+import { ProvidersHistoryProvider } from '../../providers/providers-history/providers-history';
+import { QrCodeHistory } from '../../models/history';
 
 
 @Component({
@@ -15,21 +15,17 @@ export class HomePage {
 
   qrData = null;
   createdCode = null;
-  //scannedCode = null;
 
-  constructor(private barcodeScanner: BarcodeScanner, private socialSharing: SocialSharing) {
+  constructor(private socialSharing: SocialSharing, private historyService: ProvidersHistoryProvider) {}
 
-  }
-
-  createCode() {
+  async createCode() {
     this.createdCode = this.qrData;
+    var history = <QrCodeHistory>{
+      Text: this.qrData,
+      Date: new Date()
+    };
+    await this.historyService.saveToHistory(history);
   }
-
-  // scanCode() {
-  //   this.barcodeScanner.scan().then(barcodedData => {
-  //     this.scannedCode = barcodedData.text;
-  //   });
-  // }
 
   async share() {
     var imgSrc = await this.element.toDataURL();

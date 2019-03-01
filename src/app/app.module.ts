@@ -16,6 +16,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { ProvidersStorageProvider } from '../providers/providers-storage/providers-storage';
+import { ProvidersHistoryProvider } from '../providers/providers-history/providers-history';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
@@ -43,7 +47,9 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     QrCodeProvider,
     BarcodeScanner,
-    SocialSharing
+    SocialSharing,
+    ProvidersStorageProvider,
+    ProvidersHistoryProvider
   ]
 })
 export class AppModule {}
