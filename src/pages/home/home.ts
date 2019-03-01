@@ -15,7 +15,7 @@ export class HomePage {
 
   qrData = null;
   createdCode = null;
-  scannedCode = null;
+  //scannedCode = null;
 
   constructor(private barcodeScanner: BarcodeScanner, private socialSharing: SocialSharing) {
 
@@ -25,11 +25,11 @@ export class HomePage {
     this.createdCode = this.qrData;
   }
 
-  scanCode() {
-    this.barcodeScanner.scan().then(barcodedData => {
-      this.scannedCode = barcodedData.text;
-    });
-  }
+  // scanCode() {
+  //   this.barcodeScanner.scan().then(barcodedData => {
+  //     this.scannedCode = barcodedData.text;
+  //   });
+  // }
 
   async share() {
     var imgSrc = await this.element.toDataURL();

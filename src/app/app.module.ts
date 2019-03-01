@@ -1,3 +1,4 @@
+import { QrcodereaderPage } from './../pages/qrcodereader/qrcodereader';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -20,7 +21,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    QrcodereaderPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    QrcodereaderPage
   ],
   providers: [
     StatusBar,
