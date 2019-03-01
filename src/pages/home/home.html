@@ -12,17 +12,14 @@
     <ion-input type="text" placeholder="My QR Code data" [(ngModel)]="qrData"></ion-input>
   </ion-item>
   <button ion-button full icon-left (click)="createCode()">
-    <ion-icon name="barcode">Create QR Code</ion-icon>
+    <ion-icon name="barcode"> Create QR Code</ion-icon>
   </button>
 
   <ion-card *ngIf="createdCode">
     <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
-    <ion-card-content>
-      <p>Value: {{ createdCode }}</p>
-    </ion-card-content>
   </ion-card>
 
   <button ion-button full icon-left (click)="share()">
-    <ion-icon name="share">Share QR Code</ion-icon>
+    <ion-icon name="share"> Share QR Code</ion-icon>
   </button>
 </ion-content>
