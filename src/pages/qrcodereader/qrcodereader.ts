@@ -32,8 +32,11 @@ export class QrcodereaderPage {
 
   onInputImage(event){
     var file = event.target.files[0] as File;
-    console.log(file);
+    this.readQrCodeFromFile(file);
 
+  }
+
+  private readQrCodeFromFile(file: File){
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e: any) => {
@@ -50,9 +53,6 @@ export class QrcodereaderPage {
       }
     }
     image.src = imgData;
-
     }
-
   }
-
 }
