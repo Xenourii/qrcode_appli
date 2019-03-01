@@ -13,6 +13,13 @@
     <ion-icon name="qr-scanner"> Scan QR Code</ion-icon>
   </button>
 
+  <ion-item>
+      <input #uploader type="file" accept="image/*" (change)="onInputImage($event)" hidden=true />
+      <button ion-button (click)="uploader.click()" full icon-left>
+        <ion-icon name="document"> Read QR Code from file</ion-icon>
+      </button>
+    </ion-item>
+
   <ion-card *ngIf="scannedCode">
     <ion-card-content overflow-scroll="true">
       <p class="selectable">{{ scannedCode }}</p>
