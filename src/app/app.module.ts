@@ -12,7 +12,9 @@ import { QrCodeProvider } from '../providers/qr-code/qr-code';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     QrCodeProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    SocialSharing
   ]
 })
 export class AppModule {}
